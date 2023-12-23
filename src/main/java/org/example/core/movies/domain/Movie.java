@@ -1,4 +1,11 @@
 package org.example.core.movies.domain;
 
-public class Movie {
+public record Movie (
+        String name,
+        String genre,
+        String studio,
+        int  audienceScore,
+        float profitability
+)
+{
 }
