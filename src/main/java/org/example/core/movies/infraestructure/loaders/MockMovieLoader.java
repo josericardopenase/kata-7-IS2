@@ -20,6 +20,12 @@ public class MockMovieLoader implements MovieLoader {
     }
 
     private Movie createMockMovie(int i) {
-        return new Movie();
+        return new Movie(
+                "nombre mock",
+                "terror",
+                "mock",
+                70 *i,
+                20.0 * i
+        );
     }
 }
