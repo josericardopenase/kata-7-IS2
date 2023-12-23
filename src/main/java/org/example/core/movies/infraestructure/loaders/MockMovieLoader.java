@@ -1,13 +1,28 @@
 package org.example.core.movies.infraestructure.loaders;
 
 import org.example.core.movies.application.ports.MovieLoader;
+import org.example.core.movies.application.useCases.MovieStatisticCreator;
 import org.example.core.movies.domain.Movie;
 
 import java.util.List;
+import java.util.stream.Collectors;
+import java.util.stream.IntStream;
 
 public class MockMovieLoader implements MovieLoader {
     @Override
     public List<Movie> load() {
-        return null;
+        return IntStream.range(0, 20)
+                .mapToObj(this::createMockMovie)
+                .collect(Collectors.toList());
+    }
+
+    private Movie createMockMovie(int i) {
+        return new Movie(
+                "mock",
+                "mock genre",
+                "mock studio",
+                20 *i,
+                10.0 *i
+        );
     }
 }
