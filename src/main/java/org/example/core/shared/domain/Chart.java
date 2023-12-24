@@ -1,5 +1,6 @@
 package org.example.core.shared.domain;
 
-public class Chart<DataStructure> {
-    DataStructure data;
+public record Chart<DataStructure> (
+        DataStructure data
+){
 }
