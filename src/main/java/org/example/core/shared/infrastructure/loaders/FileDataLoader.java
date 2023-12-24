@@ -1,5 +1,6 @@
 package org.example.core.shared.infrastructure.loaders;
 
+import org.example.core.movies.infraestructure.serializers.MovieCsvSerializer;
 import org.example.core.shared.application.ports.DataLoader;
 import org.example.core.shared.application.ports.Serializer;
 
@@ -17,6 +18,7 @@ public class FileDataLoader<Model> implements DataLoader<Model> {
         this.serializer = serializer;
         this.path = path;
     }
+
 
     @Override
     public List<Model> load() {
