@@ -17,7 +17,7 @@ public class MockBarChartDisplay implements BarChartDisplay {
     }
 
     private List<String> getLabelList(Map<String, Double> data) {
-        return data.keySet().stream().toList();
+        return data.keySet().stream().collect(Collectors.toList());
     }
 
     private List<Double> getValueList(Map<String, Double> data) {
