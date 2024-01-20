@@ -1,6 +1,6 @@
 package org.example.core.charts.domain;
 
-public record Chart<Data>(
+public record Statistic<Data>(
         Data data
 ) {
 }

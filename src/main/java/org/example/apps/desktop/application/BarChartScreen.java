@@ -1,19 +1,19 @@
 package org.example.apps.desktop.application;
 
-import org.example.apps.desktop.domain.BarChart;
-import org.example.core.charts.application.useCases.ChartCreator;
-import org.example.core.charts.domain.Chart;
+import org.example.core.charts.domain.BarChart;
+import org.example.core.charts.application.useCases.StatisticCreator;
+import org.example.core.charts.domain.Statistic;
 
 import java.util.Map;
 
 public class BarChartScreen<Model> implements Screen{
-    public BarChartScreen(BarChartDisplay display, ChartCreator<Model, Map<String, Double>> creator) {
+    public BarChartScreen(BarChartDisplay display, StatisticCreator<Model, Map<String, Double>> creator) {
         this.display = display;
         this.creator = creator;
     }
 
     BarChartDisplay display;
-    ChartCreator<Model, Map <String, Double>> creator;
+    StatisticCreator<Model, Map <String, Double>> creator;
 
 
 
@@ -24,12 +24,12 @@ public class BarChartScreen<Model> implements Screen{
         display.display(barChart);
     }
 
-    private BarChart chartToBarChart(Chart<Map<String, Double>> chart) {
+    private BarChart chartToBarChart(Statistic<Map<String, Double>> chart) {
         return BarChart.fromScratch()
                 .setTitle("BarChart")
                 .setxAxisTitle("X axis")
                 .setyAxisTitle("Y axis")
-                .setData(chart.data())
+                .setData(chart)
                 .build();
     }
 }

@@ -1,7 +1,7 @@
 package org.example.apps.desktop.infraestructure.mock;
 
 import org.example.apps.desktop.application.BarChartDisplay;
-import org.example.apps.desktop.domain.BarChart;
+import org.example.core.charts.domain.BarChart;
 
 import java.util.List;
 import java.util.Map;
@@ -12,9 +12,9 @@ public class MockBarChartDisplay implements BarChartDisplay {
     @Override
     public void display(BarChart barChart) {
         System.out.println("x AXIS: " + barChart.xAxisTitle());
-        System.out.println(getValueList(barChart.data()));
+        System.out.println(getValueList(barChart.statistic().data()));
         System.out.println("Y AXIS: " + barChart.yAxisTitle());
-        System.out.println(getLabelList(barChart.data()));
+        System.out.println(getLabelList(barChart.statistic().data()));
     }
 
     private List<String> getLabelList(Map<String, Double> data) {

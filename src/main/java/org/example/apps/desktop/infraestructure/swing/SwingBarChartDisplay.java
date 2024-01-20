@@ -1,14 +1,13 @@
 package org.example.apps.desktop.infraestructure.swing;
 
 import org.example.apps.desktop.application.BarChartDisplay;
-import org.example.apps.desktop.domain.BarChart;
+import org.example.core.charts.domain.BarChart;
 import org.jfree.chart.ChartFactory;
 import org.jfree.chart.ChartPanel;
 import org.jfree.data.category.CategoryDataset;
 import org.jfree.data.category.DefaultCategoryDataset;
 
 import javax.swing.*;
-import java.awt.*;
 import java.util.Map;
 
 public class SwingBarChartDisplay extends JPanel implements BarChartDisplay {
@@ -23,7 +22,7 @@ public class SwingBarChartDisplay extends JPanel implements BarChartDisplay {
                         barChart.title(),
                         barChart.xAxisTitle(),
                         barChart.yAxisTitle(),
-                        datasetFrom(barChart.data())
+                        datasetFrom(barChart.statistic().data())
                 )
         );
     }

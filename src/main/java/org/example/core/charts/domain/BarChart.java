@@ -1,4 +1,4 @@
-package org.example.apps.desktop.domain;
+package org.example.core.charts.domain;
 
 import java.util.Map;
 
@@ -6,16 +6,16 @@ public record BarChart(
         String title,
         String xAxisTitle,
         String yAxisTitle,
-        Map<String, Double> data
+        Statistic<Map<String, Double>> statistic
 ) {
     public static BarChartBuilder fromScratch() {
         return new BarChartBuilder();
     }
 
     public static class BarChartBuilder{
-        String title;
-        String xAxisTitle;
-        String yAxisTitle;
+        private String title;
+        private String xAxisTitle;
+        private String yAxisTitle;
 
         public BarChartBuilder setTitle(String title) {
             this.title = title;
@@ -32,19 +32,19 @@ public record BarChart(
             return this;
         }
 
-        public BarChartBuilder setData(Map<String, Double> data) {
-            this.data = data;
+        public BarChartBuilder setData(Statistic statistic) {
+            this.statistic = statistic;
             return this;
         }
 
-        Map<String, Double> data;
+        private Statistic statistic;
 
         public BarChart build(){
             return new BarChart(
                     this.title,
                     this.xAxisTitle,
                     this.yAxisTitle,
-                    this.data
+                    this.statistic
             );
         }
     }
