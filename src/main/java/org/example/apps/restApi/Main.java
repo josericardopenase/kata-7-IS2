@@ -24,7 +24,7 @@ public class Main {
         path("api/", () -> {
                 path("v1/", () -> {
                     path("movies", () -> {
-                        get("/chart/", (req, res) -> execute(req, res, new BarChartMoviesCreatorCommand(getMoviesBarChartCreator())));
+                        get("/chart/", (req, res) -> execute(req, res, new BarChartMoviesCreatorCommand(getMoviesLoader())));
                         get("/", (req, res) -> execute(req, res, new FindAllMoviesCommand(getMoviesLoader())));
                     });
                     path("users", () -> {
