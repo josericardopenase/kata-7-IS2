@@ -28,7 +28,17 @@ public class FileDataLoader<Model> implements DataLoader<Model> {
     private List<Model> load(BufferedReader reader) {
         return reader.lines()
                 .skip(1)
-                .map(serializer::serialize)
+                .map(x -> serializer.serialize(new ModelSerializer.Input() {
+                    @Override
+                    public String get(String key) {
+                        return null;
+                    }
+
+                    @Override
+                    public String get(int index) {
+                        return x.split(",")[index];
+                    }
+                }))
                 .collect(Collectors.toList());
     }
 }
