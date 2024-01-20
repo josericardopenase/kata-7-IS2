@@ -7,7 +7,9 @@ import static spark.Spark.*;
 public class Main {
     public static void main(String[] args) {
         port(8080);
-        defaultResponseTransformer(new Gson()::toJson);
+        var gson = new Gson();
+        defaultResponseTransformer(gson::toJson);
+        after((req, res) -> res.body(gson.toJson(res.body()).toString()));
     }
 
     private static class CommandExecutor{
