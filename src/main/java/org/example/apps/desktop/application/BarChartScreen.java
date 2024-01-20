@@ -21,6 +21,7 @@ public class BarChartScreen<Model> implements Screen{
                 .setTitle("BarChart")
                 .setxAxisTitle("X axis")
                 .setyAxisTitle("Y axis")
+                .setData(chart.data())
                 .build();
     }
 }
