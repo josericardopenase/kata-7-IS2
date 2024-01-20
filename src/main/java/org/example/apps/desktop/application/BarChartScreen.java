@@ -7,8 +7,16 @@ import org.example.core.charts.domain.Chart;
 import java.util.Map;
 
 public class BarChartScreen<Model> implements Screen{
+    public BarChartScreen(BarChartDisplay display, ChartCreator<Model, Map<String, Double>> creator) {
+        this.display = display;
+        this.creator = creator;
+    }
+
     BarChartDisplay display;
     ChartCreator<Model, Map <String, Double>> creator;
+
+
+
     @Override
     public void show() {
         var chart = this.creator.create();
