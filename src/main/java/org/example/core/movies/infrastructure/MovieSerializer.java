@@ -3,7 +3,7 @@ package org.example.core.movies.infrastructure;
 import org.example.core.charts.application.ports.ModelSerializer;
 import org.example.core.movies.domain.Movie;
 
-public class CsvMovieSerializer implements ModelSerializer<Movie> {
+public class MovieSerializer implements ModelSerializer<Movie> {
 
     @Override
     public Movie serialize(Input data) {
