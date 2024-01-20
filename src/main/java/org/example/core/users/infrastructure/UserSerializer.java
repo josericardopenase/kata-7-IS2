@@ -3,7 +3,7 @@ package org.example.core.users.infrastructure;
 import org.example.core.charts.application.ports.ModelSerializer;
 import org.example.core.users.domain.User;
 
-public class CsvUserSerializer implements ModelSerializer<User> {
+public class UserSerializer implements ModelSerializer<User> {
 
     @Override
     public User serialize(Input data) {
