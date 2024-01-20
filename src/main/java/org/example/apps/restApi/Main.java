@@ -34,12 +34,6 @@ public class Main {
             }
         );
     }
-
-    private static StatisticCreator<Movie, Map<String, Double>> getMoviesBarChartCreator() {
-        var processor = new BarChartProcessor<Movie>(Movie::genre, averagingInt(Movie::audienceScore));
-        return new StatisticCreator<>(getMoviesLoader(), processor);
-    }
-
     private static Object execute(Request req, Response res, Command command) {
         return CommandExecutor
                 .from(req, res)
