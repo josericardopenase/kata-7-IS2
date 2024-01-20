@@ -22,6 +22,7 @@ public class Main {
         var gson = new Gson();
         defaultResponseTransformer(gson::toJson);
         path("api/", () -> {
+                path("v1/", () -> {
                     path("movies", () -> {
                         get("/chart/", (req, res) -> execute(req, res, new BarChartMoviesCreatorCommand(getMoviesBarChartCreator())));
                         get("/", (req, res) -> execute(req, res, new FindAllMoviesCommand(getMoviesLoader())));
@@ -29,7 +30,8 @@ public class Main {
                     path("users", () -> {
 
                     });
-                }
+                });
+            }
         );
     }
 
@@ -41,10 +43,9 @@ public class Main {
     private static Object execute(Request req, Response res, Command command) {
         return CommandExecutor
                 .from(req, res)
-                .execute(new FindAllMoviesCommand(getMoviesLoader()))
+                .execute(command)
                 .result();
     }
-
     private static DataLoader<Movie> getMoviesLoader() {
         return new FileDataLoader<Movie>("movies.csv", new MovieSerializer());
     }
