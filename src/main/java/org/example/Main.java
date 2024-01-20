@@ -14,7 +14,7 @@ import static java.util.stream.Collectors.averagingInt;
 public class Main {
     public static void main(String[] args) {
         var serializer = new CsvUserSerializer();
-        var loader = new FileDataLoader<>("movies.csv", serializer);
+        var loader = new FileDataLoader<>("users.csv", serializer);
         var processor = new BarChartProcessor<>(User::firstName, averagingInt(x-> x.password().length()));
         var chartCreator = new ChartCreator<>(loader, processor);
         var chart = chartCreator.create();
