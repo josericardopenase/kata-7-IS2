@@ -27,6 +27,7 @@ public class Main {
             }
         );
     }
+
     private static Object execute(Request req, Response res, Command command) {
         return CommandExecutor
                 .from(req, res)
