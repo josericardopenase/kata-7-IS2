@@ -4,17 +4,14 @@ import org.example.core.charts.application.ports.ModelSerializer;
 import org.example.core.users.domain.User;
 
 public class CsvUserSerializer implements ModelSerializer<User> {
-    @Override
-    public User serialize(String data) {
-        return serialize(data.split(","));
-    }
 
-    private User serialize(String[] split) {
+    @Override
+    public User serialize(Input data) {
         return new User(
-                split[0],
-                split[1],
-                split[2],
-                split[3]
+                data.get(0),
+                data.get(1),
+                data.get(2),
+                data.get(3)
         );
     }
 }

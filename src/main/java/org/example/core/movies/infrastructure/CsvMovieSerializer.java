@@ -6,14 +6,13 @@ import org.example.core.movies.domain.Movie;
 public class CsvMovieSerializer implements ModelSerializer<Movie> {
 
     @Override
-    public Movie serialize(String data) {
-        var splitted = data.split(",");
+    public Movie serialize(Input data) {
         return new Movie(
-                splitted[0],
-                splitted[1],
-                splitted[2],
-                Integer.parseInt(splitted[3]),
-                Double.parseDouble(splitted[4])
+                data.get(0),
+                data.get(1),
+                data.get(2),
+                Integer.parseInt(data.get(3)),
+                Double.parseDouble(data.get(4))
         );
     }
 }
