@@ -11,4 +11,18 @@ public interface Command {
         int statusCode();
         Model result();
     }
+
+    static <Model>Output<Model> output(Model result, int statusCode){
+        return new Output<Model>() {
+            @Override
+            public int statusCode() {
+                return statusCode;
+            }
+
+            @Override
+            public Model result() {
+                return result;
+            }
+        };
+    }
 }
