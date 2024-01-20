@@ -15,7 +15,7 @@ public class Main {
         defaultResponseTransformer(gson::toJson);
         path("api/", () -> {
                     path("movies", () -> {
-                        get("/", (req, res) -> CommandExecutor.from(req, res).execute(new FindAllMoviesCommand(getMoviesLoader())));
+                        get("/", (req, res) -> CommandExecutor.from(req, res).execute(new FindAllMoviesCommand(getMoviesLoader())).result());
 
                     });
                     path("users", () -> {

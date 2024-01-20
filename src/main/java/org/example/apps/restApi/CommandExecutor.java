@@ -5,7 +5,10 @@ import spark.Response;
 
 public record CommandExecutor(Request req, Response res) {
     public Command.Output execute(Command command){
-       return command.execute(getInput());
+        res.type("application/json");
+        var execution = command.execute(getInput());
+        res.status(execution.statusCode());
+       return execution;
     }
 
     private Command.Input getInput() {
