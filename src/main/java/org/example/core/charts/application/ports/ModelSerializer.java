@@ -1,7 +1,7 @@
 package org.example.core.charts.application.ports;
 
 public interface ModelSerializer <Model>{
-    Model serialize(Input data);
+    Model deserialize(Input data);
 
     interface Input{
         String get(String key);

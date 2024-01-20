@@ -6,7 +6,7 @@ import org.example.core.users.domain.User;
 public class UserSerializer implements ModelSerializer<User> {
 
     @Override
-    public User serialize(Input data) {
+    public User deserialize(Input data) {
         return new User(
                 data.get(0),
                 data.get(1),

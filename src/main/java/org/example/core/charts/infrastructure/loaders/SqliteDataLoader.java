@@ -31,7 +31,7 @@ public class SqliteDataLoader<Model> implements DataLoader<Model> {
     private List<Model> load(ResultSet result) throws SQLException {
         var data = new ArrayList<Model>();
         while(result.next()){
-            data.add(serializer.serialize(new ModelSerializer.Input() {
+            data.add(serializer.deserialize(new ModelSerializer.Input() {
                 @Override
                 public String get(String key) {
                     try {

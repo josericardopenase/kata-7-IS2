@@ -6,7 +6,7 @@ import org.example.core.movies.domain.Movie;
 public class MovieSerializer implements ModelSerializer<Movie> {
 
     @Override
-    public Movie serialize(Input data) {
+    public Movie deserialize(Input data) {
         return new Movie(
                 data.get(0),
                 data.get(1),

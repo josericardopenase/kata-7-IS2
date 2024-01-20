@@ -28,7 +28,7 @@ public class FileDataLoader<Model> implements DataLoader<Model> {
     private List<Model> load(BufferedReader reader) {
         return reader.lines()
                 .skip(1)
-                .map(x -> serializer.serialize(new ModelSerializer.Input() {
+                .map(x -> serializer.deserialize(new ModelSerializer.Input() {
                     @Override
                     public String get(String key) {
                         return null;
