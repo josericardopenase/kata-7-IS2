@@ -28,7 +28,7 @@ public class BarChartMoviesCreatorCommand implements Command {
 
     private void fillOperableKeys() {
         operableKeys.put("audienceScore", x -> (double) x.audienceScore());
-        operableKeys.put("profibatility", Movie::profitability);
+        operableKeys.put("profitability", Movie::profitability);
     }
 
     private void fillGroupingKeys() {
@@ -45,11 +45,17 @@ public class BarChartMoviesCreatorCommand implements Command {
     private Statistic<Map<String, Double>> getStatisticFrom(DataLoader<Movie> loader, Input input) {
         var groupedBy = input.get("groupedBy");
         var operatedBy = input.get("operatedBy");
+        if(notValidArgs(groupedBy, operatedBy)) return Statistic.empty();
         var creator = new StatisticCreator<>(
                 loader,
                 getMovieBarChartProcessor(groupedBy, operatedBy)
         );
         return creator.create();
+    }
+
+    private boolean notValidArgs(String groupedBy, String operatedBy) {
+        if (groupedBy == null || operatedBy == null) return true;
+        return groupedBy.isBlank() || groupedBy.isEmpty() || operatedBy.isBlank() || operatedBy.isEmpty();
     }
 
     private BarChartProcessor<Movie> getMovieBarChartProcessor(String groupedBy, String operatedBy) {
