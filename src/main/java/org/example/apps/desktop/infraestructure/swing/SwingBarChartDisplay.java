@@ -14,6 +14,7 @@ public class SwingBarChartDisplay extends JPanel implements BarChartDisplay {
     @Override
     public void display(BarChart barChart) {
         add(panelFrom(barChart));
+        setVisible(true);
     }
 
     private JPanel panelFrom(BarChart barChart) {

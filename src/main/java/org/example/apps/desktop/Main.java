@@ -3,9 +3,11 @@ package org.example.apps.desktop;
 import org.example.apps.desktop.application.BarChartScreen;
 import org.example.apps.desktop.infraestructure.swing.MainFrame;
 import org.example.core.charts.application.useCases.StatisticCreator;
+import org.example.core.charts.infrastructure.loaders.FileDataLoader;
 import org.example.core.charts.infrastructure.loaders.SqliteDataLoader;
 import org.example.core.charts.infrastructure.processors.BarChartProcessor;
 import org.example.core.movies.domain.Movie;
+import org.example.core.movies.infrastructure.MockMovieLoader;
 import org.example.core.movies.infrastructure.MovieSerializer;
 
 import java.sql.DriverManager;
@@ -24,9 +26,7 @@ public class Main {
     }
 
     private static StatisticCreator<Movie, Map<String, Double>> getChartCreator() throws SQLException {
-        var connection = DriverManager.getConnection("jdbc:sqlite:movies.sqlite");
-        var serializer = new MovieSerializer();
-        var loader = new SqliteDataLoader<>(connection, serializer);
+        var loader = new MockMovieLoader();
         var processor = new BarChartProcessor<>(Movie::genre, averagingInt(Movie::audienceScore));
         return new StatisticCreator<>(loader, processor);
     }
